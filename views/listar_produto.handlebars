@@ -1,0 +1,20 @@
+<h1>Lista de produtos</h1>
+<br>
+<table>
+    <thead>
+        <th>Código</th>
+        <th>Nome do Produto</th>
+        <th>Preço da unidade</th>
+        <th>Quantidade em estoque</th>
+    </thead>
+    {{#each valores}}
+        <tbody>
+            <tr>
+                <td>{{this.id}}</td>
+                <td>{{this.nome_produto}}</td>
+                <td>{{this.preco_unidade}}</td>
+                <td>{{this.qtd_estoque}}</td>
+            </tr>
+        </tbody>
+    {{/each}}
+</table>

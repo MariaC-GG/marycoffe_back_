@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="/css/entrar.css">
+
+<body>
+<header>
+    <!-- header -->
+    <div class="entrar">
+     <!-- botão de voltar -->
+     <button onclick="location.href='/home'" type="submit" class="btn-voltar"><span class="material-symbols-outlined" >arrow_back_ios</span></button>
+     <!-- botão de excluir o que foi escrito -->
+    <span class="fechar-tela-x"><i class='bx bx-x'></i></span>
+        <!-- caixa de login -->
+        <div class="caixa_login">
+            <h2>Login</h2>
+            <form action="/entrar" method="post">
+                <div class="caixa-input">
+                    <span class="iconnes"><i class='bx bxs-envelope' ></i></span>
+                    <input type="email" name='email'required>
+                    <label>Email</label>
+                </div>
+
+                <div class="caixa-input">
+                    <span class="iconnes"><i class='bx bxs-lock-alt'></i></span>
+                    <input type="password" name="senha" required>
+                    <label>Senha</label>
+                </div>
+                <!-- botão de feito login -->
+                <button type="submit" class="btn">Entrar</button>
+            </form>
+        </div>
+    </div>
+</header>
+{{#if msg}}
+<p>{{msg}}</p>
+{{/if}}
+</body>

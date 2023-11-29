@@ -1,0 +1,58 @@
+<link rel="stylesheet" href="/css/cadastro.css">
+
+<body>
+<header>
+    <!-- header -->
+    <div class="cadastro">
+        <!-- botão de voltar -->
+        <button onclick="location.href='/home'" type="submit" class="btn-voltar"><span class="material-symbols-outlined" >arrow_back_ios</span></button>
+        <!-- botão de excluir o que foi escrito -->
+        <span class="fechar-tela-x"><i class='bx bx-x'></i></span>
+        <!-- caixa cadastra -->
+        <div class="caixa_cadas">
+            <h2>Cadastrar</h2>
+            <form action="/cadastrar" method="post">
+                <div class="caixa-input">
+                    <span class="iconnes"><i class='bx bxs-user' ></i></span>
+                    <input type="text" name="nome_usuario" required>
+                    <label>Nome</label>
+                </div>
+
+                <div class="caixa-input">
+                    <span class="iconnes"><i class='bx bxs-envelope' ></i></span>
+                    <input type="email" name="email" required>
+                    <label>Email</label>
+                </div>
+
+                <div class="caixa-input">
+                    <span class="iconnes"><i class='bx bxs-lock-alt'></i></span>
+                    <input type="password" name="senha" required>
+                    <label>Senha</label>
+                </div>
+
+                <div class="caixa-input">
+                    <span class="iconnes"><i class='bx bxs-phone'></i></span>
+                    <input type="text" name="telefone" required>
+                    <label>Telefone</label>
+                </div>
+
+                <!-- <div class="caixa-input">
+                    <span class="iconnes"><i class='bx bxs-location-plus'></i></span>
+                    <input type="address" required>
+                    <label>Endereço</label>
+                </div> -->
+
+                <div class="aceitar-politica">
+                    <label><input type="checkbox">Estou de acordo com os termos e condições</label>
+                </div>
+                <!-- botão de feito o cadastro -->
+                <button type="submit" class="btn" >Cadastrar</button>
+                <!-- <button onclick="location.href='products.html'">Home</button> -->
+            </form>
+        </div>
+    </div>
+</header>
+{{#if msg}}
+<p>{{msg}}</p>
+{{/if}}
+</body>
