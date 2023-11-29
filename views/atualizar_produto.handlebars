@@ -1,0 +1,19 @@
+<h1>Atualizar produto</h1>
+<form action="/atualizar_produto" method="post">
+<label for="nome_produto">nome do produto</label>
+<input type="text" name="nome_produto">
+<br>
+<label for="novo_nome">nome novo</label>
+<input type="text" name="novo_nome">
+<br>
+<label for="preco_unidade">preço da unidade</label>
+<input type="text" name="preco_unidade">
+<br>
+<label for="qtd_estoque">quantidade no estoque</label>
+<input type="text" name="qtd_estoque">
+<br>
+<button type="submit">Atualizado</button>
+</form>
+{{#if msg}}
+<p>{{msg}}</p>
+{{/if}}

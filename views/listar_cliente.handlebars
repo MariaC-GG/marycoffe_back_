@@ -1,0 +1,20 @@
+<h1>Lista de cliente</h1>
+<br>
+<table>
+    <thead>
+        <th>Código</th>
+        <th>Nome do cliente</th>
+        <th>telefone</th>
+        <th>email</th>
+    </thead>
+    {{#each valores}}
+        <tbody>
+            <tr>
+                <td>{{this.id}}</td>
+                <td>{{this.nome_usuario}}</td>
+                <td>{{this.telefone}}</td>
+                <td>{{this.email}}</td>
+            </tr>
+        </tbody>
+    {{/each}}
+</table>

@@ -15,6 +15,7 @@ let msg = ''
 let id_usuario = ''
 let usuario = ''
 let tipoUsuario = ''
+let tipoAdm = false
 
 // configuração do express
 app.use(express.urlencoded({extended:true}))
@@ -25,23 +26,61 @@ app.use(express.static('public'))
 app.set('view engine', 'handlebars')
 app.engine('handlebars', exphbs.engine())
 // ------------------------------------------------------------------
+// ------------------adm
+app.get('/administrador', (req,res)=>{
+    res.render('administrador', {log})
+})
 // =========ATUALIZAR =======================
+app.post('/atualizar_produto', async (req,res)=>{
+    const nome_produto = req.body.nome_produto
+    const novo_nome = req.body.novo_nome
+    const qtde_estoque = Number(req.body.qtd_estoque)
+    const preco_unidade = Number(req.body.preco_unidade)
+    let msg = 'Dados cadastrados!'
+
+    const dado_nome = await Produto.findOne({raw:true, where: {nome:nome}})
+
+    if(dado_nome != null){
+        const dados = {
+            nome_produto: novo_nome,
+            qtde_estoque: qtde_estoque,
+            preco_unidade: preco_unidade
+        }
+        if((typeof nome ==='string')&&(typeof qtde_produto ==='number')&&(typeof preco_unidade ==='number')){
+            await Produto.update(dados, {where: {nome:nome}})
+            res.render('atualizar_produto')
+        }else{
+            res.render('atualizar_produto', {msg})
+        }
+    }else{
+        res.render('atualizar_produto', {msg})
+    }
+    // res.redirect('/atualizar')
+})
+
+app.get('/atualizar_produto', (req,res)=>{
+    res.render('atualizar_produto')
+})
 
 
 
 
 
 // ===========EXCLUIR PRODUTO =====================
-app.post('/excluir_prod', async(req,res)=>{
+app.post('/excluir_produto', async(req,res)=>{
     const nome_produto = req.body.nome_produto
 
     const pesq = await Produto.findOne({raw:true, where:{nome_produto:nome_produto}})
-
+    let msg ='os dados foram excluidos'
     if(pesq === null){
-        res.render('excluir', {log})
+        res.render('excluir_produto', {log})
     }else{
         Produto.destroy({where:{nome_produto:nome_produto}})
     }
+})
+
+app.get('/excluir_produto', (req,res)=>{
+    res.render('excluir_produto', {log})
 })
 
 // =============LISTAR PRODUTO ============
@@ -50,7 +89,10 @@ app.get('/listar_produto', async(req,res)=>{
     res.render('listar_produto', {log, valores:dados})
 })
 // ----------LISTAR CLIENTE
-
+app.get('/listar_cliente', async(req,res)=>{
+    const dados = await Usuario.findAll({raw:true})
+    res.render('listar_cliente', {log, valores:dados})
+})
 
 // ========CADASTRO======================
 app.post('/cadastrar', async (req, res)=>{
@@ -85,6 +127,8 @@ app.post('/cadastrar', async (req, res)=>{
 app.get('/cadastrar', (req, res)=>{
     res.render('cadastrar', {log, id_usuario, usuario, administrador})
 })
+// usuário-----
+
 // produto-------
 app.post('/cadastrar_produto', async (req, res)=>{
     const nome_produto = req.body.nome_produto
@@ -121,7 +165,8 @@ app.post('/entrar', async (req,res)=>{
                     usuario = pesq.nome_usuario
                     tipoUsuario = pesq.tipo
                     administrador = true
-                    res.render('administrador', {log, id_usuario, usuario, administrador})        
+                    tipoAdm = true
+                    res.render('produto', {log, id_usuario, usuario, administrador, tipoAdm})        
                 }else if(pesq.tipo === 'cliente'){
                     log = true
                     id_usuario = Number(pesq.id)
