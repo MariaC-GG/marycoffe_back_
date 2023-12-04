@@ -1,5 +1,7 @@
-<h1>Lista de cliente</h1>
+<link rel="stylesheet" href="../css/listar.css">
+<h1>Lista de clientes</h1>
 <br>
+<div class="tbl">
 <table>
     <thead>
         <th>Código</th>
@@ -7,14 +9,15 @@
         <th>telefone</th>
         <th>email</th>
     </thead>
-    {{#each valores}}
         <tbody>
+    {{#each valores}}
             <tr>
                 <td>{{this.id}}</td>
                 <td>{{this.nome_usuario}}</td>
                 <td>{{this.telefone}}</td>
                 <td>{{this.email}}</td>
             </tr>
-        </tbody>
     {{/each}}
+        </tbody>
 </table>
+</div>

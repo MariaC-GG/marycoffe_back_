@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="../css/cadas_prod.css">
+<h1>Cadastrar produto</h1>
+<div class="cadas">
 <form action="/cadastrar_produto" method="post">
 <label for="nome_produto">nome do produto</label>
 <input type="text" name="nome_produto">
@@ -10,6 +13,7 @@
 <br>
 <button type="submit">Feito</button>
 </form>
+</div>
 {{#if msg}}
 <p>{{msg}}</p>
 {{/if}}

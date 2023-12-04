@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="../css/atualiza.css">
+<h1>Atualizar produto</h1>
+<div class="edita">
+<form action="/atualizar_clien" method="post">
+<label for="email">Seu email</label>
+<input type="text" name="email">
+<br>
+<label for="novo_email">Novo email</label>
+<input type="text" name="novo_email">
+<br>
+<label for="telefone">Telefone</label>
+<input type="text" name="telefone">
+<br>
+<button type="submit">Atualizado</button>
+</form>
+</div>
+{{#if msg}}
+<p>{{msg}}</p>
+{{/if}}

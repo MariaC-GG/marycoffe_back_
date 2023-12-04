@@ -31,6 +31,7 @@ app.get('/administrador', (req,res)=>{
     res.render('administrador', {log})
 })
 // =========ATUALIZAR =======================
+
 app.post('/atualizar_produto', async (req,res)=>{
     const nome_produto = req.body.nome_produto
     const novo_nome = req.body.novo_nome
@@ -38,30 +39,63 @@ app.post('/atualizar_produto', async (req,res)=>{
     const preco_unidade = Number(req.body.preco_unidade)
     let msg = 'Dados cadastrados!'
 
-    const dado_nome = await Produto.findOne({raw:true, where: {nome:nome}})
+    const pesq = await Produto.findOne({raw:true, where:{nome_produto:nome_produto}})
 
-    if(dado_nome != null){
-        const dados = {
-            nome_produto: novo_nome,
-            qtde_estoque: qtde_estoque,
-            preco_unidade: preco_unidade
-        }
-        if((typeof nome ==='string')&&(typeof qtde_produto ==='number')&&(typeof preco_unidade ==='number')){
-            await Produto.update(dados, {where: {nome:nome}})
+    const dados = {
+        nome_produto: novo_nome,
+        qtde_estoque: qtde_estoque,
+        preco_unidade: preco_unidade
+    }
+    if(pesq != null){
+        if((typeof nome_produto ==='string')&&(typeof qtde_estoque ==='number')&&(typeof preco_unidade ==='number')){
+            await Produto.update(dados, {where: {nome_produto:pesq.nome_produto}})
+            msg = "atualizado com sucesso"
             res.render('atualizar_produto')
         }else{
+            msg = "tipo de dado inválido"
             res.render('atualizar_produto', {msg})
         }
     }else{
+        msg = "nome do produto não encontrado"
         res.render('atualizar_produto', {msg})
     }
-    // res.redirect('/atualizar')
 })
 
 app.get('/atualizar_produto', (req,res)=>{
     res.render('atualizar_produto')
 })
+// cliente-------
+app.post('/atualizar_clien', async (req,res)=>{
+    const email = req.body.email
+    const novo_email= req.body.novo_email
+    const telefone = Number(req.body.telefone)
+    let msg = 'Dados cadastrados!'
 
+    const pesq = await Usuario.findOne({raw:true, where:{email:email}})
+
+    const dados = {
+        email: novo_email,
+        telefone: telefone
+    }
+    if(pesq != null){
+        if((typeof email ==='string')&&(typeof telefone ==='number')){
+            await Usuario.update(dados, {where: {email:pesq.email}})
+            msg = "atualizado com sucesso"
+            res.render('atualizar_clien')
+        }else{
+            msg = "tipo de dado inválido"
+            res.render('atualizar_clien', {msg})
+        }
+    }else{
+        msg = "email não encontrado"
+        res.render('atualizar_clien', {msg})
+    }
+})
+
+
+app.get('/atualizar_clien', (req,res)=>{
+    res.render('atualizar_clien')
+})
 
 
 

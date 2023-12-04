@@ -1,10 +1,13 @@
+<link rel="stylesheet" href="../css/excluir.css">
 <h1>Excluir produto</h1>
+<div class="delete">
 <form action="/excluir_produto" method="post">
 <label for="nome_produto">Digitar Nome do Produto </label>
 <input type="text" name="nome_produto">
 <br>
 <button type="submit">Apagar</button>
 </form>
+</div>
 {{#if msg}}
 <p>{{msg}}</p>
 {{/if}}

@@ -1,19 +1,23 @@
+<link rel="stylesheet" href="../css/atualiza.css">
 <h1>Atualizar produto</h1>
+
+<div class="edita">
 <form action="/atualizar_produto" method="post">
-<label for="nome_produto">nome do produto</label>
+<label for="nome_produto">Nome do produto</label>
 <input type="text" name="nome_produto">
 <br>
-<label for="novo_nome">nome novo</label>
+<label for="novo_nome">Nome novo</label>
 <input type="text" name="novo_nome">
 <br>
-<label for="preco_unidade">preço da unidade</label>
+<label for="preco_unidade">Preço da unidade</label>
 <input type="text" name="preco_unidade">
 <br>
-<label for="qtd_estoque">quantidade no estoque</label>
+<label for="qtd_estoque">Quantidade no estoque</label>
 <input type="text" name="qtd_estoque">
 <br>
 <button type="submit">Atualizado</button>
 </form>
+</div>
 {{#if msg}}
 <p>{{msg}}</p>
 {{/if}}

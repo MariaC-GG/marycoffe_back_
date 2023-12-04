@@ -1,0 +1,19 @@
+h1{
+    text-align: center;
+}
+.tbl{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+}
+td{
+    text-align: center;
+}
+table{
+    border-collapse: collapse;
+    margin: 50px;
+}
+table, th, td{
+    border: 1px solid black;
+}

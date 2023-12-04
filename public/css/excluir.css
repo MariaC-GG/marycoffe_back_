@@ -1,0 +1,24 @@
+h1{
+    text-align: center;
+}
+.delete{
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+}
+input {
+    border: 1px solid;  
+    border-radius: 10px;
+}
+input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
+  label{
+    font-size: 20px;
+  }
+  button{
+    width: 20%;
+  }
